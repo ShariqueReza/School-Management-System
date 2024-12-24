@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title>Index Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS_files/Index.css" />
+    <link rel="stylesheet" href="{% static 'app/CSS_Files/index.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +15,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary box_clr">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="Images/3ce196b55fd63cba9f7387a298cdc96e.jpg" alt="Logo" width="40" height="38" class="d-inline-block align-text-top">
+                    <img src="{% static 'images\3ce196b55fd63cba9f7387a298cdc96e.jpg' %}" alt="Logo" width="40" height="38" class="d-inline-block align-text-top">
                 </a>
                 <button class="navbar-toggler bg-body-success" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-hint">Dashboard</span>
@@ -142,7 +143,7 @@
                     <div class="container">
                         <div class="image-container">
                             <h2 class="overlay-text">𝓣𝓱𝓮 𝓕𝓾𝓽𝓾𝓻𝓮 𝓲𝓼 𝓱𝓮𝓻𝓮</h2>
-                            <img src="Images/pexels-droosmo-2982449.jpg" class="img-fluid rounded" alt="Responsive Image">
+                            <img src="{% static 'images\pexels-droosmo-2982449.jpg' %}" class="img-fluid rounded" alt="Responsive Image">
                         </div>
 
                     </div>
@@ -168,7 +169,7 @@
     </main>
     <footer class="footer box_clr">
         <div class="container">
-            <h2><img src="Images/contact.png" class="me-3" width="40" height="38">Contact us:</h2>
+            <h2><img src="{% static 'images\contact.png' %}" class="me-3" width="40" height="38">Contact us:</h2>
             <a href="shariquereza786@gmail.com"><i class="fas fa-envelope"></i> Gmail</a> |
             <a href="tel:+1234567890"><i class="fas fa-phone"></i> Phone</a> |
             <a href="https://www.instagram.com/its_sharique08/profilecard/?igsh=MWh0YmJvaWp1aHdjNw%3D%3D"><i class="fab fa-instagram"></i> Instagram</a> |
@@ -180,7 +181,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="JS_files/index.js">
+    <script src="{% static "app/JS_Files/index.js" %}">
     </script>
 </body>
 </html>
