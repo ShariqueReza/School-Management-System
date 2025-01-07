@@ -64,25 +64,27 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
                     <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
                     <table class="table table-bordered">
-                        <thead style="font-weight: bold; background-color: black; color: white;">
+                        <thead style="font-weight: 900; background-color: black; color: white;">
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Ph No.</th>
-                                <th>Subjects</th>
-                                <th>Class Teacher</th>
-                                <th>Position</th>
+                                <th class="about_text">Name</th>
+                                <th class="about_text">Email</th>
+                                <th class="about_text">Phone No.</th>
+                                <th class="about_text">Subjects</th>
+                                <th class="about_text">Class Teacher</th>
+                                <th class="about_text">Position</th>
                             </tr>
                         </thead>
-                        <tbody style="background-color: rgb(240, 208, 170);">
+                        <tbody style="background-color: rgb(240, 208, 170); font-weight:600; cursor: pointer;">
+                            {% for t in teacher %}
                             <tr>
-                                <td>John Doe</td>
-                                <td>john.doe@gmail.com</td>
-                                <td>123-456-7890</td>
-                                <td>Math, Science</td>
-                                <td>Class 5</td>
-                                <td>Science Department</td>
+                                <td class="about_text">{{t.name}}</td>
+                                <td class="about_text">{{t.Email}}</td>
+                                <td class="about_text">{{t.phone_number}}</td>
+                                <td class="about_text">{{t.subjects}}</td>
+                                <td class="about_text">{{t.class_teacher_of}}</td>
+                                <td class="about_text">{{t.position}}</td>   
                             </tr> 
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
