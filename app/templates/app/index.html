@@ -1,66 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{% endblock title %}
 {% load static %}
-{% block content %} 
-    <main>
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                <div class="col-lg-4 col-md-4 col-sm-12 sidebar">  
-                    <h2 class="text-center"></h2>
-                    <div class="calendar">
-                        <header>
-                          <h3></h3>
-                          <nav>
-                            <button id="prev"></button>
-                            <button id="next"></button>
-                          </nav>
-                        </header>
-                        <section>
-                          <ul class="days">
-                            <li>Sun</li>
-                            <li>Mon</li>
-                            <li>Tue</li>
-                            <li>Wed</li>
-                            <li>Thu</li>
-                            <li>Fri</li>
-                            <li>Sat</li>
-                          </ul>
-                          <ul class="dates"></ul>
-                        </section>
-                    </div>
-                    <div class="container mt-5 box_clr rounded" style="max-width: 75%;">
-                        <div class="dropdown d-flex justify-content-center">
-                            <button class="btn btn-med btn-outline-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Announcement
-                            </button>
-                            <ul class="dropdown-menu box_clr">
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Announcement-1</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Announcement-2</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Announcement-3</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Announcement-4</button></li>
-                            </ul>
-                        </div>
-                
-                        <div class="dropdown mt-3 d-flex justify-content-center">
-                            <button class="btn btn-med btn-outline-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Events
-                            </button>
-                            <ul class="dropdown-menu box_clr">
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Event-1</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Event-2</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Event-3</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Event-4</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                
-                </div>
+{% block content %}  
                 <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
                     <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
                     <div class="container">
@@ -86,8 +27,5 @@
                         sports, arts, and community service projects, which help in building teamwork, leadership skills, and a 
                         sense of responsibility.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    {% endblock content %}
+                </div>         
+{% endblock content %}
