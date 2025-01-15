@@ -24,12 +24,14 @@
                         </form>
                         <h3 class="text-center about_text mt-5">What Others Say</h3>
                         <div class="container rounded" style="background-color: rgb(190, 154, 111);">
+                            {% for f in feedback  %}
                             <div class="fs-4">
-                                <h4 class="about_text">Author name</h4>
+                                <h4 class="about_text">{{f.name}}</h4>
                               <div>
-                                <p class="about_text">Comment</p>
+                                <p class="about_text">{{f.comment}}</p>
                               </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

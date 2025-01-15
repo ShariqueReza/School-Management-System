@@ -16,6 +16,7 @@ def teacher_page(request):
     return render(request,'app/teachers.html',context)
 
 def feedback_page(request):
+    feedbacks=feedback.objects.all()
     form=FeedbackForm()
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
@@ -25,5 +26,5 @@ def feedback_page(request):
         else:
             form = FeedbackForm()
 
-    context={'form':form}
+    context={'form':form,'feedback':feedbacks}
     return render(request,'app/feedback.html',context)
