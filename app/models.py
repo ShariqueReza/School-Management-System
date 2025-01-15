@@ -14,5 +14,14 @@ class feedback(models.Model):
     email=models.EmailField(max_length=100,null=True)
     comment=models.CharField(max_length=500)
 
+class Student(models.Model):
+    st_name=models.CharField(max_length=100)
+    address=models.CharField(max_length=400)
+    contact_no=models.IntegerField(null=True)
+    parents_names=models.CharField(max_length=200)
+    blood_gr=models.CharField(max_length=10)
+    emergency=models.IntegerField(null=True)
+
+
 
     
