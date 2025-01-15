@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from app.models import teachers,feedback
 from app.forms import FeedbackForm
-from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -16,5 +16,13 @@ def teacher_page(request):
     return render(request,'app/teachers.html',context)
 
 def feedback_page(request):
-    context={}
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("index.html")
+        else:
+            form = FeedbackForm()
+            
+    context={'form':form}
     return render(request,'app/feedback.html',context)
