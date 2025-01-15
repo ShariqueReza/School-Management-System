@@ -16,13 +16,14 @@ def teacher_page(request):
     return render(request,'app/teachers.html',context)
 
 def feedback_page(request):
+    form=FeedbackForm()
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index.html")
+            return redirect("/")
         else:
             form = FeedbackForm()
-            
+
     context={'form':form}
     return render(request,'app/feedback.html',context)

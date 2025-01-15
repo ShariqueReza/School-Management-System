@@ -10,15 +10,15 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="authorName" class="font-weight-bold about_text">Full Name</label>
-                                <input type="text" class="form-control" id="authorName" placeholder="Enter your name">
+                                {{form.name}}
                             </div>
                             <div class="form-group">
                                 <label for="gmail" class="font-weight-bold about_text">Email</label>
-                                <input type="email" class="form-control" id="gmail" placeholder="Enter your Email">
+                                {{form.email}}
                             </div>
                             <div class="form-group">
                                 <label for="comment" class="font-weight-bold about_text">Comment</label>
-                                <textarea class="form-control" id="comment" rows="3" placeholder="Enter your comment"></textarea>
+                                {{form.comment}}
                             </div>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </form>
