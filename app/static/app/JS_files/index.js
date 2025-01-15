@@ -74,3 +74,29 @@ navs.forEach((nav) => {
 });
 
 renderCalendar();
+
+
+function toggleEdit() {
+  var inputs = document.querySelectorAll('input');
+  var spans = document.querySelectorAll('span'); 
+  for (var i = 0; i < inputs.length; i++){
+      if (inputs[i].style.display === 'none') {
+          inputs[i].style.display = 'inline'; 
+          spans[i].style.display = 'none';
+      } else {
+          inputs[i].style.display = 'none';
+          spans[i].style.display = 'inline'; 
+      }
+  } 
+} 
+
+function submitData() { 
+  var inputs = document.querySelectorAll('input');
+  var spans = document.querySelectorAll('span');
+  for (var i = 0; i < inputs.length; i++) { 
+      spans[i].innerText = inputs[i].value;
+      inputs[i].style.display = 'none'; 
+      spans[i].style.display = 'inline'; 
+  } 
+  alert("Data Submitted!"); 
+}
