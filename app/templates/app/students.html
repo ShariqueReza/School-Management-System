@@ -18,16 +18,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>John Doe</td>
-                                <td>john.doe@gmail.com</td>
-                                <td>123-456-7890</td>
-                                <td>Math, Science</td>
-                                <td>Class 5</td>
-                                <td>Science Department</td>
+                                <td><span id="name1">John Doe</span><input type="text" id="input_name1" name="name" value="John Doe" style="display: none;" /></td>
+                                <td><span id="email1">john.doe@gmail.com</span><input type="email" id="input_email1" name="email" value="john.doe@gmail.com" style="display: none;" />
+                                <td><span id="phone1">123-456-7890</span><input type="text" id="input_phone1" name="phone" value="123-456-7890" style="display: none;" /></td>
+                                <td><span id="subjects1">Math, Science</span><input type="text" id="input_subjects1" name="subjects" value="Math, Science" style="display: none;" /></td>
+                                <td><span id="class1">Class 5</span><input type="text" id="input_class1" name="class" value="Class 5" style="display: none;" /></td>
+                                <td><span id="department1">Science Department</span><input type="text" id="input_department1" name="department" value="Science Department" style="display: none;" /></td>
                             </tr>
-                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
-                    
+                    <button class="btn btn-danger" onclick="toggleEdit()">Edit</button>
+                    <button class="btn btn-success" onclick="submitData()">Submit</button>                  
                 </div>
 {% endblock content %}
