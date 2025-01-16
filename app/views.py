@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from app.models import teachers,feedback
+from app.models import teachers,feedback,Student
 from app.forms import FeedbackForm
 
 
@@ -28,3 +28,5 @@ def feedback_page(request):
 
     context={'form':form,'feedback':feedbacks}
     return render(request,'app/feedback.html',context)
+
+

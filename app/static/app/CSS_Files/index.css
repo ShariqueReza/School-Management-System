@@ -11,6 +11,10 @@ body{
 .navbar-toggler-hint {
     display: none;
 }
+.card-custom{
+  background-color: rgb(240, 208, 170);
+  text-align: center;
+}
 .edit-btn { 
   margin-right: 10px;
 }
