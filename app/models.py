@@ -18,9 +18,10 @@ class Student(models.Model):
     st_name=models.CharField(max_length=100)
     address=models.CharField(max_length=400)
     contact_no=models.IntegerField(null=True)
-    parents_names=models.CharField(max_length=200)
+    parents_names=models.CharField(max_length=400)
     blood_gr=models.CharField(max_length=10)
     emergency=models.IntegerField(null=True)
+    slug=models.SlugField(max_length=200,unique=True,blank=True)
 
 
 
