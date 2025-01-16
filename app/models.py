@@ -14,7 +14,14 @@ class feedback(models.Model):
     email=models.EmailField(max_length=100,null=True)
     comment=models.CharField(max_length=500)
 
+class all_students(models.Model):
+    class_name = models.CharField(max_length=50,blank=True)
+    def __str__(self):
+        return self.class_name
+
+
 class Student(models.Model):
+    class_name = models.ForeignKey(all_students, on_delete=models.CASCADE, related_name='students',null=True)
     st_name=models.CharField(max_length=100)
     address=models.CharField(max_length=400)
     contact_no=models.IntegerField(null=True)
