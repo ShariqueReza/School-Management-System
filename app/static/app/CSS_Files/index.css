@@ -11,6 +11,12 @@ body{
 .navbar-toggler-hint {
     display: none;
 }
+.edit-btn { 
+  margin-right: 10px;
+}
+.address-col { 
+  width: 200px;
+}
 @media (max-width: 992px) {
     .navbar-toggler-hint {
         display: inline-block;
