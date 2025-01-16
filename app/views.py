@@ -29,4 +29,6 @@ def feedback_page(request):
     context={'form':form,'feedback':feedbacks}
     return render(request,'app/feedback.html',context)
 
-
+def all_students(request):
+    context={}
+    return render(request,'app/all_students.html',context)
