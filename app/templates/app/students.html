@@ -5,29 +5,47 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
                     <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
                     <h3 class="text-center">Class 7</h3>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Student Name</th>
-                                <th>Address</th>
-                                <th>Contact No.</th>
-                                <th>Parents Names</th>
-                                <th>Blood Gr</th>
-                                <th>Emergency Contact No.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span id="name1">John Doe</span><input type="text" id="input_name1" name="name" value="John Doe" style="display: none;" /></td>
-                                <td><span id="email1">john.doe@gmail.com</span><input type="email" id="input_email1" name="email" value="john.doe@gmail.com" style="display: none;" />
-                                <td><span id="phone1">123-456-7890</span><input type="text" id="input_phone1" name="phone" value="123-456-7890" style="display: none;" /></td>
-                                <td><span id="subjects1">Math, Science</span><input type="text" id="input_subjects1" name="subjects" value="Math, Science" style="display: none;" /></td>
-                                <td><span id="class1">Class 5</span><input type="text" id="input_class1" name="class" value="Class 5" style="display: none;" /></td>
-                                <td><span id="department1">Science Department</span><input type="text" id="input_department1" name="department" value="Science Department" style="display: none;" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="btn btn-danger" onclick="toggleEdit()">Edit</button>
-                    <button class="btn btn-success" onclick="submitData()">Submit</button>                  
+                    <form id="studentForm">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Address</th>
+                                    <th>Contact No</th>
+                                    <th>Parent's Name</th>
+                                    <th>Blood Group</th>
+                                    <th>Emergency Contact</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="form-control" name="st_name" value="John Doe" readonly></td>
+                                    <td><input type="text" class="form-control" name="address" value="123 Street" readonly></td>
+                                    <td><input type="text" class="form-control" name="contact_no" value="1234567890" readonly></td>
+                                    <td><input type="text" class="form-control" name="parents_name" value="Jane Doe" readonly></td>
+                                    <td><input type="text" class="form-control" name="blood_gr" value="A+" readonly></td>
+                                    <td><input type="text" class="form-control" name="emergency" value="9876543210" readonly></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary edit-btn">Edit</button>
+                                        <button type="button" class="btn btn-danger delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="form-control" name="st_name" value="Jane Smith" readonly></td>
+                                    <td><input type="text" class="form-control" name="address" value="456 Avenue" readonly></td>
+                                    <td><input type="text" class="form-control" name="contact_no" value="2345678901" readonly></td>
+                                    <td><input type="text" class="form-control" name="parents_name" value="John Smith" readonly></td>
+                                    <td><input type="text" class="form-control" name="blood_gr" value="B+" readonly></td>
+                                    <td><input type="text" class="form-control" name="emergency" value="8765432109" readonly></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary edit-btn">Edit</button>
+                                        <button type="button" class="btn btn-danger delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>                 
                 </div>
 {% endblock content %}
