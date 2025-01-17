@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from app.models import teachers,feedback,Student
+from django.shortcuts import render,redirect,get_object_or_404
+from app.models import teachers,feedback,Student,all_students
 from app.forms import FeedbackForm
 
 
@@ -29,6 +29,13 @@ def feedback_page(request):
     context={'form':form,'feedback':feedbacks}
     return render(request,'app/feedback.html',context)
 
-def all_students(request):
+def all_student(request):
     context={}
     return render(request,'app/all_students.html',context)
+
+def class_students(request,slug):
+    class_instance = all_students.objects.get(slug=slug)
+    students = Student.objects.filter(class_name=class_instance)
+    context={'students':students,'class_instance': class_instance}
+    return render(request,'app/students.html',context)
+
