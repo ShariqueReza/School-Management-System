@@ -11,38 +11,28 @@
                                 <tr>
                                     <th>Student Name</th>
                                     <th class="address-col">Address</th>
-                                    <th>Contact No</th>
-                                    <th>Parent's Name</th>
+                                    <th class="address-col">Contact No</th>
+                                    <th class="address-col">Parent's Name</th>
                                     <th>Blood Group</th>
-                                    <th>Emergency Contact</th>
+                                    <th class="address-col">Emergency Contact</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for student in students %}
                                 <tr>
-                                    <td><input type="text" class="form-control" name="st_name" value="" readonly></td>
-                                    <td><input type="text" class="form-control" name="address" value="123 Street" readonly></td>
-                                    <td><input type="text" class="form-control" name="contact_no" value="1234567890" readonly></td>
-                                    <td><input type="text" class="form-control" name="parents_name" value="Jane Doe" readonly></td>
-                                    <td><input type="text" class="form-control" name="blood_gr" value="A+" readonly></td>
-                                    <td><input type="text" class="form-control" name="emergency" value="9876543210" readonly></td>
+                                    <td><input type="text" class="form-control" name="st_name" value="{{ student.st_name }}" readonly></td>
+                                    <td><input type="text" class="form-control" name="address" value="{{ student.address }}" readonly></td>
+                                    <td><input type="text" class="form-control" name="contact_no" value="{{ student.contact_no }}" readonly></td>
+                                    <td><input type="text" class="form-control" name="parents_names" value="{{ student.parents_names }}" readonly></td>
+                                    <td><input type="text" class="form-control" name="blood_gr" value="{{ student.blood_gr }}" readonly></td>
+                                    <td><input type="text" class="form-control" name="emergency" value="{{ student.emergency }}" readonly></td>
                                     <td>
                                         <button type="button" class="btn btn-primary edit-btn">Edit</button>
                                         <button type="button" class="btn btn-danger delete-btn">Delete</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="text" class="form-control" name="st_name" value="Jane Smith" readonly></td>
-                                    <td><input type="text" class="form-control" name="address" value="456 Avenue" readonly></td>
-                                    <td><input type="text" class="form-control" name="contact_no" value="2345678901" readonly></td>
-                                    <td><input type="text" class="form-control" name="parents_name" value="John Smith" readonly></td>
-                                    <td><input type="text" class="form-control" name="blood_gr" value="B+" readonly></td>
-                                    <td><input type="text" class="form-control" name="emergency" value="8765432109" readonly></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary edit-btn">Edit</button>
-                                        <button type="button" class="btn btn-danger delete-btn">Delete</button>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                         <button type="submit" class="btn btn-success">Submit</button>
