@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% load static %}
+{% block content %} 
+                <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
+                    <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
+                    <h3 class="text-center mt-3">List of Students</h3>
+                    <div class="container mt-3">
+                        <div class="card card-custom mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Class 7</h5>
+                                <p class="card-text">Check students details of class 7</p>
+                                <a href="{% url "class_students" slug='seven' %}" class="btn btn-success">Click here</a>
+                            </div>
+                        </div>
+                        <div class="card card-custom mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Class 8</h5>
+                                <p class="card-text">Check students details of class 8</p>
+                                <a href="{% url "class_students" slug='eight' %}" class="btn btn-success">Click here</a>
+                            </div>
+                        </div>
+                        <div class="card card-custom mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Class 9</h5>
+                                <p class="card-text">SCheck students details of class 9</p>
+                                <a href="{% url "class_students" slug='nine' %}" class="btn btn-success">Click here</a>
+                            </div>
+                        </div>
+                        <div class="card card-custom mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Class 10</h5>
+                                <p class="card-text">Check students details of class 10</p>
+                                <a href="{% url "class_students" slug='ten' %}" class="btn btn-success">Click here</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}
