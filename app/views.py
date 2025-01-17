@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect
 from app.models import teachers,feedback,Student,all_students
-from app.forms import FeedbackForm
+from app.forms import FeedbackForm,StudentForm
 
 
 
@@ -36,6 +36,15 @@ def all_student(request):
 def class_students(request,slug):
     class_instance = all_students.objects.get(slug=slug)
     students = Student.objects.filter(class_name=class_instance)
-    context={'students':students,'class_instance': class_instance}
+
+    form=StudentForm()
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+        else:
+            form = StudentForm()
+    context={'students':students,'class_instance': class_instance,'form':form}
     return render(request,'app/students.html',context)
 
