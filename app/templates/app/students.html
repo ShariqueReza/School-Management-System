@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Edit Students{% endblock title %}
+{% block title %}Student details{% endblock title %}
 {% load static %}
 {% block content %}
 <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
@@ -10,15 +10,8 @@
     </div>
     <form id="studentForm" method="POST" novalidate>
         {% csrf_token %}
-        <input type="hidden" name="student_id" id="student_id" value="">
-        <input type="text" name="st_name" id="id_st_name" value="">
-        <input type="text" name="address" id="id_address" value="">
-        <input type="text" name="contact_no" id="id_contact_no" value="">
-        <input type="text" name="parents_names" id="id_parents_names" value="">
-        <input type="text" name="blood_gr" id="id_blood_gr" value="">
-        <input type="text" name="emergency" id="id_emergency" value="">
         <table class="table table-bordered">
-            <thead>
+            <thead style="background-color: rgb(240, 208, 170);">
                 <tr>
                     <th>Student Name</th>
                     <th class="address-col">Address</th>
@@ -29,7 +22,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="background-color: rgb(240, 208, 170);">
                 {% for student in students %}
                 <tr id="student-{{ student.id }}">
                     <td>{{ student.st_name }}</td>
@@ -46,6 +39,49 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h3 class="text-center"> Edit the details</h3>
+        <div class="rounded" style="background-color: rgb(240, 208, 170);">
+        <form>
+            <input type="hidden" name="student_id" id="student_id" value="">
+            <div class="form-group row justify-content-center">
+                <label for="id_st_name" class="col-sm-2 col-form-label text-center mt-2">Student Name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control mt-2" name="st_name" id="id_st_name" value="">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="id_address" class="col-sm-2 col-form-label text-center">Address</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="address" id="id_address" value="">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="id_contact_no" class="col-sm-2 col-form-label text-center">Contact No</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="contact_no" id="id_contact_no" value="">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="id_parents_names" class="col-sm-2 col-form-label text-center">Parent's Name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control mt-1" name="parents_names" id="id_parents_names" value="">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="id_blood_gr" class="col-sm-2 col-form-label text-center mt-2">Blood Group</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control mt-2" name="blood_gr" id="id_blood_gr" value="">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="id_emergency" class="col-sm-2 col-form-label text-center">Emergency Contact</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control mt-2" name="emergency" id="id_emergency" value="">
+                </div>
+            </div>
+        </form>
+    </div>
+          
         <button type="submit" class="btn btn-success">Submit</button>
     </form>                 
 </div>
