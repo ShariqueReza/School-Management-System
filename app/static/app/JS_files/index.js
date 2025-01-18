@@ -76,20 +76,4 @@ navs.forEach((nav) => {
 renderCalendar();
 
 
-document.querySelectorAll('.edit-btn').forEach(button => {
-  button.addEventListener('click', function () {
-      let row = this.closest('tr');
-      row.querySelectorAll('input').forEach(input => input.removeAttribute('readonly'));
-  });
-});
 
-document.querySelectorAll('.delete-btn').forEach(button => {
-  button.addEventListener('click', function () {
-      this.closest('tr').remove();
-  });
-});
-
-document.getElementById('studentForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  alert('Students data submitted!');
-});

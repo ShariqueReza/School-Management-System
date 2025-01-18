@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
+from django.http import JsonResponse,Http404
 from app.models import teachers,feedback,Student,all_students
 from app.forms import FeedbackForm,StudentForm
 
@@ -30,21 +31,49 @@ def feedback_page(request):
     return render(request,'app/feedback.html',context)
 
 def all_student(request):
-    context={}
-    return render(request,'app/all_students.html',context)
+    context = {}
+    return render(request, 'app/all_students.html', context)
 
-def class_students(request,slug):
-    class_instance = all_students.objects.get(slug=slug)
+def class_students(request, slug):
+    class_instance = get_object_or_404(all_students, slug=slug)
     students = Student.objects.filter(class_name=class_instance)
 
-    form=StudentForm()
     if request.method == 'POST':
-        form = StudentForm(request.POST)
+        student_id = request.POST.get('student_id')
+        if student_id:
+            student = Student.objects.get(id=student_id)
+            form = StudentForm(request.POST, instance=student)
+        else:
+            form = StudentForm(request.POST)
+        
         if form.is_valid():
             form.save()
-            return redirect("/")
-        else:
-            form = StudentForm()
-    context={'students':students,'class_instance': class_instance,'form':form}
-    return render(request,'app/students.html',context)
+            # Redirect back to the same page with a query parameter
+            return redirect(f"{request.path_info}?saved=true")
+    
+    form = StudentForm()
+    context = {'students': students, 'class_instance': class_instance, 'form': form}
+    return render(request, 'app/students.html', context)
 
+
+def get_student(request, student_id):
+    try:
+        student = Student.objects.get(id=student_id)
+        data = {
+            'id': student.id,
+            'st_name': student.st_name,
+            'address': student.address,
+            'contact_no': student.contact_no,
+            'parents_names': student.parents_names,
+            'blood_gr': student.blood_gr,
+            'emergency': student.emergency,
+        }
+        return JsonResponse(data)
+    except Student.DoesNotExist:
+        raise Http404("Student not found")
+
+
+def delete_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    student.delete()
+    return JsonResponse({'status': 'success'})

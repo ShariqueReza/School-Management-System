@@ -1,41 +1,102 @@
 {% extends "base.html" %}
-{% block title %}{% endblock title %}
+{% block title %}Edit Students{% endblock title %}
 {% load static %}
 {% block content %}
-                <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
-                    <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
-                    <h3 class="text-center">{{class_instance.class_name}}</h3>
-                    <form id="studentForm">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Student Name</th>
-                                    <th class="address-col">Address</th>
-                                    <th class="address-col">Contact No</th>
-                                    <th class="address-col">Parent's Name</th>
-                                    <th>Blood Group</th>
-                                    <th class="address-col">Emergency Contact</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for student in students %}
-                                <tr>
-                                    <td><input type="text" class="form-control" name="st_name" value="{{ student.st_name }}" readonly></td>
-                                    <td><input type="text" class="form-control" name="address" value="{{ student.address }}" readonly></td>
-                                    <td><input type="text" class="form-control" name="contact_no" value="{{ student.contact_no }}" readonly></td>
-                                    <td><input type="text" class="form-control" name="parents_names" value="{{ student.parents_names }}" readonly></td>
-                                    <td><input type="text" class="form-control" name="blood_gr" value="{{ student.blood_gr }}" readonly></td>
-                                    <td><input type="text" class="form-control" name="emergency" value="{{ student.emergency }}" readonly></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary edit-btn">Edit</button>
-                                        <button type="button" class="btn btn-danger delete-btn">Delete</button>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>                 
-                </div>
+<div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
+    <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
+    <h3 class="text-center">{{ class_instance.class_name }}</h3>
+    <div id="notification" class="alert alert-success" role="alert" style="display: none;">
+        Saved successfully!
+    </div>
+    <form id="studentForm" method="POST" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="student_id" id="student_id" value="">
+        <input type="text" name="st_name" id="id_st_name" value="">
+        <input type="text" name="address" id="id_address" value="">
+        <input type="text" name="contact_no" id="id_contact_no" value="">
+        <input type="text" name="parents_names" id="id_parents_names" value="">
+        <input type="text" name="blood_gr" id="id_blood_gr" value="">
+        <input type="text" name="emergency" id="id_emergency" value="">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th class="address-col">Address</th>
+                    <th class="address-col">Contact No</th>
+                    <th class="address-col">Parent's Name</th>
+                    <th>Blood Group</th>
+                    <th class="address-col">Emergency Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr id="student-{{ student.id }}">
+                    <td>{{ student.st_name }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.contact_no }}</td>
+                    <td>{{ student.parents_names }}</td>
+                    <td>{{ student.blood_gr }}</td>
+                    <td>{{ student.emergency }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary edit-btn" data-id="{{ student.id }}">Edit</button>
+                        <button type="button" class="btn btn-danger delete-btn" data-id="{{ student.id }}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>                 
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const studentId = this.getAttribute('data-id');
+                    fetch(`/get_student/${studentId}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('student_id').value = data.id;
+                            document.getElementById('id_st_name').value = data.st_name;
+                            document.getElementById('id_address').value = data.address;
+                            document.getElementById('id_contact_no').value = data.contact_no;
+                            document.getElementById('id_parents_names').value = data.parents_names;
+                            document.getElementById('id_blood_gr').value = data.blood_gr;
+                            document.getElementById('id_emergency').value = data.emergency;
+                        })
+                        .catch(error => console.error("Error fetching data:", error));
+                });
+            });
+        
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const studentId = this.getAttribute('data-id');
+                    fetch(`/delete_student/${studentId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            const row = document.getElementById(`student-${studentId}`);
+                            row.parentNode.removeChild(row);
+                        }
+                    });
+                });
+            });
+
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('saved') === 'true') {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 7000);
+            }
+        });
+        
+</script>
 {% endblock content %}

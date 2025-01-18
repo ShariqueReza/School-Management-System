@@ -9,4 +9,6 @@ urlpatterns = [
     path('feedback',views.feedback_page,name="feedback"),
     path('all_student',views.all_student,name="all_student"),
     path('class/<slug:slug>/',views.class_students,name="class_students"), 
+    path('get_student/<int:student_id>/', views.get_student, name='get_student'),
+    path('delete_student/<int:student_id>/', views.delete_student, name='delete_student'),
 ]
