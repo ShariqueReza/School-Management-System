@@ -39,6 +39,15 @@ class Student(models.Model):
     emergency=models.IntegerField(null=True)
 
 
+class all_results(models.Model):
+    result_class_name = models.CharField(max_length=50,blank=True)
+    slug=models.SlugField(max_length=200,unique=True,null=True)
 
-
+    def save(self,*args, **kwargs):
+        if not self.id:
+            self.slug=slugify(self.result_class_name)
+        return super(all_results,self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.result_class_name
     
