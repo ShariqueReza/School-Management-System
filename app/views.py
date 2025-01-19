@@ -48,7 +48,6 @@ def class_students(request, slug):
         
         if form.is_valid():
             form.save()
-            # Redirect back to the same page with a query parameter
             return redirect(f"{request.path_info}?saved=true")
     
     form = StudentForm()
