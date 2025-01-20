@@ -1,5 +1,5 @@
 from django import forms
-from app.models import feedback,Student
+from app.models import feedback,Student,Result
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model=Student
         fields = ['st_name', 'address', 'contact_no', 'parents_names', 'blood_gr', 'emergency']
+
+class ResultForm(forms.ModelForm):
+    class Meta:
+        model=Result
+        fields = ['st_name', 'Math', 'Science', 'English', 'Hindi', 'emergency']
