@@ -32,8 +32,8 @@
                                 <td>{{result.Total_marks}}</td>
                                 <td>{{result.Percentage}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary edit-btn" data-id="{{ result.id }}">Edit</button>
-                                    <button type="button" class="btn btn-danger delete-btn" data-id="{{ result.id }}">Delete</button>
+                                    <button type="button" class="btn btn-primary result-edit-btn" data-id="{{ result.id }}">Edit</button>
+                                    <button type="button" class="btn btn-danger result-delete-btn" data-id="{{ result.id }}">Delete</button>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -41,6 +41,57 @@
                     </table>
                     <button type="submit" class="btn btn-success">Submit</button>   
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.querySelectorAll('.result-edit-btn').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const studentId = this.getAttribute('data-id');
+                                fetch(`/get_result/${studentId}/`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        document.getElementById('student_id').value = data.id;
+                                        document.getElementById('id_st_name').value = data.st_name;
+                                        document.getElementById('id_math').value = data.Math;
+                                        document.getElementById('id_science').value = data.Science;
+                                        document.getElementById('id_english').value = data.English;
+                                        document.getElementById('id_hindi').value = data.Hindi;
+                                        document.getElementById('id_total_marks').value = data.Total_marks;
+                                        document.getElementById('id_percentage').value = data.Percentage;
+                                    })
+                                    .catch(error => console.error("Error fetching data:", error));
+                            });
+                        });
+                    
+                        document.querySelectorAll('.result-delete-btn').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const studentId = this.getAttribute('data-id');
+                                fetch(`/delete_result/${studentId}/`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRFToken': '{{ csrf_token }}'
+                                    }
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.status === 'success') {
+                                        const row = document.getElementById(`student-${studentId}`);
+                                        row.parentNode.removeChild(row);
+                                    }
+                                });
+                            });
+                        });
+                
+                        const params = new URLSearchParams(window.location.search);
+                        if (params.get('saved') === 'true') {
+                            const notification = document.getElementById('notification');
+                            notification.style.display = 'block';
+                            setTimeout(() => {
+                                notification.style.display = 'none';
+                            }, 7000);
+                        }
+                    });
+                    
+                </script>
 {% endblock content %}    
 
 
