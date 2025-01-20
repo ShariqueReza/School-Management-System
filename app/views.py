@@ -76,3 +76,7 @@ def delete_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     student.delete()
     return JsonResponse({'status': 'success'})
+
+def all_result(request):
+    context={}
+    return render(request, 'app/all_results.html', context)
