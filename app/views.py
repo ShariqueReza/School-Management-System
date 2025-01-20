@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse,Http404
-from app.models import teachers,feedback,Student,all_students
-from app.forms import FeedbackForm,StudentForm
+from app.models import teachers,feedback,Student,all_students,Result,all_results
+from app.forms import FeedbackForm,StudentForm,ResultForm
 
 
 
@@ -30,6 +30,8 @@ def feedback_page(request):
     context={'form':form,'feedback':feedbacks}
     return render(request,'app/feedback.html',context)
 
+
+#For Student Details
 def all_student(request):
     context = {}
     return render(request, 'app/all_students.html', context)
@@ -77,6 +79,28 @@ def delete_student(request, student_id):
     student.delete()
     return JsonResponse({'status': 'success'})
 
+
+#For Result Details
 def all_result(request):
     context={}
     return render(request, 'app/all_results.html', context)
+
+def class_results(request, slug):
+    class_instance = get_object_or_404(all_results, slug=slug)
+    results = Result.objects.filter(result_class_name=class_instance)
+
+    if request.method == 'POST':
+        student_id = request.POST.get('student_id')
+        if student_id:
+            result = Result.objects.get(id=student_id)
+            form = ResultForm(request.POST, instance=result)
+        else:
+            form = ResultForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            return redirect(f"{request.path_info}?saved=true")
+    
+    form = ResultForm()
+    context = {'results': results, 'class_instance': class_instance, 'form': form}
+    return render(request, 'app/result.html', context)

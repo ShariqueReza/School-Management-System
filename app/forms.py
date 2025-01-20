@@ -19,4 +19,4 @@ class StudentForm(forms.ModelForm):
 class ResultForm(forms.ModelForm):
     class Meta:
         model=Result
-        fields = ['st_name', 'Math', 'Science', 'English', 'Hindi', 'emergency']
+        fields = ['st_name', 'Math', 'Science', 'English', 'Hindi', 'Total_marks', 'Percentage']
