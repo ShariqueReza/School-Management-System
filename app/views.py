@@ -104,3 +104,20 @@ def class_results(request, slug):
     form = ResultForm()
     context = {'results': results, 'class_instance': class_instance, 'form': form}
     return render(request, 'app/result.html', context)
+
+def get_result(request, student_id):
+    try:
+        result = Result.objects.get(id=student_id)
+        data = {
+            'id': result.id,
+            'st_name': result.st_name,
+            'Math': result.Math,
+            'Science': result.Science,
+            'English': result.English,
+            'Hindi': result.Hindi,
+            'Total_marks': result.Total_marks,
+            'Percentage':result.Percentage
+        }
+        return JsonResponse(data)
+    except Result.DoesNotExist:
+        raise Http404("Result not found")
