@@ -121,3 +121,8 @@ def get_result(request, student_id):
         return JsonResponse(data)
     except Result.DoesNotExist:
         raise Http404("Result not found")
+
+def delete_result(request, student_id):
+    result = get_object_or_404(Result, id=student_id)
+    result.delete()
+    return JsonResponse({'status': 'success'})
