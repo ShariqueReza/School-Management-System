@@ -76,9 +76,9 @@ class all_exams(models.Model):
     
 class Exam(models.Model):
     exam_class_name = models.ForeignKey(all_exams, on_delete=models.CASCADE, related_name='students_exam',null=True,blank=True)
-    date=models.DateTimeField()
+    date=models.DateField()
     subject=models.CharField(max_length=100)
     shift=models.CharField(max_length=100)
-    start_time=models.TimeField()
-    end_time=models.TimeField()
-    total_time=models.IntegerField(null=True)
+    start_time=models.CharField(max_length=20,null=True)
+    end_time=models.CharField(max_length=20,null=True)
+    total_time=models.CharField(max_length=20,null=True)
