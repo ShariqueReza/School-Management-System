@@ -24,4 +24,4 @@ class ResultForm(forms.ModelForm):
 class ExamForm(forms.ModelForm):
     class Meta:
         model=Exam
-        fields=['date','subject','shift','start_time','end_time']
+        fields=['date','subject','shift','start_time','end_time','total_time']
