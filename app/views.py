@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse,Http404
-from app.models import teachers,feedback,Student,all_students,Result,all_results
-from app.forms import FeedbackForm,StudentForm,ResultForm
+from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams
+from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm
 
 
 
@@ -146,3 +146,34 @@ def delete_result(request, student_id):
 def all_exam(request):
     context = {}
     return render(request, 'app/all_exams.html', context)
+
+
+def class_exams(request, slug):
+    class_instance = get_object_or_404(all_exams, slug=slug)
+    exams = Exam.objects.filter(exam_class_name=class_instance)
+
+    if request.method == 'POST':
+        print(request.POST)
+        student_id = request.POST.get('student_id')
+        if student_id:
+            exam = Exam.objects.get(id=student_id)
+            form = ExamForm(request.POST, instance=exam)
+        else:
+            form = ExamForm(request.POST)
+        
+        if form.is_valid():
+            exam = form.save()
+            return JsonResponse({
+                'status': 'success',
+                'id': exam.id,
+                'date': exam.date,
+                'subject': exam.subject,
+                'shift': exam.shift,
+                'start_time': exam.start_time,
+                'end_time': exam.end_time,
+                'total_time': exam.total_time
+            })
+
+    form = ExamForm()
+    context = {'exams': exams, 'class_instance': class_instance, 'form': form}
+    return render(request, 'app/exam.html', context)

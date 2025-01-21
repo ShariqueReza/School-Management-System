@@ -16,4 +16,5 @@ urlpatterns = [
     path('get_result/<int:student_id>/', views.get_result, name='get_result'),
     path('delete_result/<int:student_id>/', views.delete_result, name='delete_result'),
     path('all_exam',views.all_exam,name="all_exam"),
+    path('class_exams/<slug:slug>/',views.class_exams,name="class_exams"),
 ]
