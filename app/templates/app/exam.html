@@ -13,16 +13,20 @@
                 <th>Shift</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Duration</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>john.doe@gmail.com</td>
-                <td>123-456-7890</td>
-                <td>Math, Science</td>
-                <td>Class 5</td>
+            {% for exam in exams %}
+            <tr id="student-{{ exam.id }}">
+                <td>{{exam.date}}</td>
+                <td>{{exam.subject}}</td>
+                <td>{{exam.shift}}</td>
+                <td>{{exam.start_time}}</td>
+                <td>{{exam.end_time}}</td>
+                <td>{{exam.total_time}}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
