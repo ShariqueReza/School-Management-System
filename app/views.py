@@ -177,3 +177,20 @@ def class_exams(request, slug):
     form = ExamForm()
     context = {'exams': exams, 'class_instance': class_instance, 'form': form}
     return render(request, 'app/exam.html', context)
+
+def get_result(request, student_id):
+    try:
+        exam = Exam.objects.get(id=student_id)
+        data = {
+            'id': exam.id,
+            'date': exam.date,
+            'subject': exam.subject,
+            'shift': exam.shift,
+            'start_time': exam.start_time,
+            'end_time': exam.end_time,
+            'total_time': exam.total_time
+
+        }
+        return JsonResponse(data)
+    except Exam.DoesNotExist:
+        raise Http404("Exam not found")
