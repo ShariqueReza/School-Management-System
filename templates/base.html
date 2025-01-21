@@ -37,20 +37,11 @@
                                All Results
                             </button>
                         </a>
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-med btn-outline-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Exams
+                        <a class="nav-item" href="{% url "all_exam" %}">
+                            <button class="btn btn-med btn-outline-dark" type="button">
+                               All Exams
                             </button>
-                            <ul class="dropdown-menu box_clr">
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Class-7</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Class-8</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Class-9</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item btn btn-secondary" href="#">Class-8</button></li>
-                            </ul>
-                        </li>
+                        </a>
                         <a class="nav-item" href="{% url "feedback" %}">
                             <button class="btn btn-med btn-outline-dark" type="button">Feedback</button>
                         </a>
