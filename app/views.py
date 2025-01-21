@@ -138,3 +138,11 @@ def delete_result(request, student_id):
     result = get_object_or_404(Result, id=student_id)
     result.delete()
     return JsonResponse({'status': 'success'})
+
+
+
+#for Exam Details
+
+def all_exam(request):
+    context = {}
+    return render(request, 'app/all_exams.html', context)
