@@ -60,3 +60,17 @@ class Result(models.Model):
     Hindi=models.IntegerField(null=True)
     Total_marks=models.IntegerField(null=True)
     Percentage=models.FloatField(null=True)
+
+
+class all_exams(models.Model):
+    exam_class_name = models.CharField(max_length=50,blank=True)
+    slug=models.SlugField(max_length=200,unique=True,null=True)
+
+    def save(self,*args, **kwargs):
+        if not self.id:
+            self.slug=slugify(self.exam_class_name)
+        return super(all_exams,self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.exam_class_name
+    
