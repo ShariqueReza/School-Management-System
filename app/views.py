@@ -90,6 +90,7 @@ def class_results(request, slug):
     results = Result.objects.filter(result_class_name=class_instance)
 
     if request.method == 'POST':
+        print(request.POST)
         student_id = request.POST.get('student_id')
         if student_id:
             result = Result.objects.get(id=student_id)
@@ -98,12 +99,23 @@ def class_results(request, slug):
             form = ResultForm(request.POST)
         
         if form.is_valid():
-            form.save()
-            return redirect(f"{request.path_info}?saved=true")
-    
+            result = form.save()
+            return JsonResponse({
+                'status': 'success',
+                'id': result.id,
+                'st_name': result.st_name,
+                'Math': result.Math,
+                'Science': result.Science,
+                'English': result.English,
+                'Hindi': result.Hindi,
+                'Total_marks': result.Total_marks,
+                'Percentage': result.Percentage
+            })
+
     form = ResultForm()
     context = {'results': results, 'class_instance': class_instance, 'form': form}
     return render(request, 'app/result.html', context)
+
 
 def get_result(request, student_id):
     try:
