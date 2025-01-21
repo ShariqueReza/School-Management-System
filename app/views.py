@@ -178,7 +178,7 @@ def class_exams(request, slug):
     context = {'exams': exams, 'class_instance': class_instance, 'form': form}
     return render(request, 'app/exam.html', context)
 
-def get_result(request, student_id):
+def get_exam(request, student_id):
     try:
         exam = Exam.objects.get(id=student_id)
         data = {
@@ -194,3 +194,8 @@ def get_result(request, student_id):
         return JsonResponse(data)
     except Exam.DoesNotExist:
         raise Http404("Exam not found")
+    
+def delete_exam(request, student_id):
+    exam = get_object_or_404(Exam, id=student_id)
+    exam.delete()
+    return JsonResponse({'status': 'success'})
