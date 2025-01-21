@@ -74,3 +74,10 @@ class all_exams(models.Model):
     def __str__(self):
         return self.exam_class_name
     
+class Exam(models.Model):
+    exam_class_name = models.ForeignKey(all_exams, on_delete=models.CASCADE, related_name='students_exam',null=True,blank=True)
+    date=models.DateTimeField(auto_now=True)
+    subject=models.CharField(max_length=100)
+    shift=models.CharField(max_length=100)
+    start_time=models.TimeField()
+    end_time=models.TimeField()
