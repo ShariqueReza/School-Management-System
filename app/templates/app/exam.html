@@ -91,6 +91,66 @@
                 });
             });
         });
+        document.getElementById('studentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const row = document.getElementById(`student-${data.id}`);
+                    if (row) {
+                        row.querySelector('td:nth-child(1)').innerText = data.date;
+                        row.querySelector('td:nth-child(2)').innerText = data.subject;
+                        row.querySelector('td:nth-child(3)').innerText = data.shift;
+                        row.querySelector('td:nth-child(4)').innerText = data.start_time;
+                        row.querySelector('td:nth-child(5)').innerText = data.end_time;
+                        row.querySelector('td:nth-child(6)').innerText = data.total_time;
+                    } else {
+                        const newRow = `
+                            <tr id="student-${data.id}">
+                                <td>${data.date}</td>
+                                <td>${data.subject}</td>
+                                <td>${data.shift}</td>
+                                <td>${data.start_time}</td>
+                                <td>${data.end_time}</td>
+                                <td>${data.total_time}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary exam-edit-btn" data-id="${data.id}">Edit</button>
+                                    <button type="button" class="btn btn-danger exam-delete-btn" data-id="${data.id}">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                        document.querySelector('tbody').insertAdjacentHTML('beforeend', newRow);
+                    }
+                    document.getElementById('notification_exam').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('notification_exam').style.display = 'none';
+                    }, 7000);
+                    document.getElementById('studentForm').reset();
+                } else {
+                    console.error("Error saving data:", data.errors);
+                }
+            })
+            .catch(error => console.error("Error saving data:", error));
+        });
+        
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('saved') === 'true') {
+            const notification_exam = document.getElementById('notification_exam');
+            notification_exam.style.display = 'block';
+            setTimeout(() => {
+                notification_exam.style.display = 'none';
+            }, 7000);
+        }
+        
     });
 </script>
 {% endblock content %}
