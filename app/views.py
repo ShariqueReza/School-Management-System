@@ -6,6 +6,11 @@ from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm
 
 
 # Create your views here.
+def base(request):
+    announcement=Announcement.objects.all()
+    context={'announcement':announcement}
+    return render(request,'base_template/base.html',context)
+
 def index_page(request):
     context={}
     return render(request,'app/index.html',context)
