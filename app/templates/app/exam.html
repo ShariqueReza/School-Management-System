@@ -73,6 +73,24 @@
                     .catch(error => console.error("Error fetching data:", error));
             });
         });
+        document.querySelectorAll('.exam-delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const studentId = this.getAttribute('data-id');
+                fetch(`/delete_exam/${studentId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const row = document.getElementById(`student-${studentId}`);
+                        row.parentNode.removeChild(row);
+                    }
+                });
+            });
+        });
     });
 </script>
 {% endblock content %}
