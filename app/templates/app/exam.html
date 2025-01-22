@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Exam Time Table{% endblock title %}
 {% load static %}
-{% block content %} 
-<div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
-    <h2 class="text-center">𝑩𝒓𝒊𝒈𝒉𝒕𝒐𝒏 𝑺𝒄𝒉𝒐𝒐𝒍</h2>
+{% block content %}
+<div class="col-lg-8 col-md-8 col-sm-12 main-content">
+    <h2 class="text-center">Brighton School</h2>
     <h3 class="text-center mb-3">{{ class_instance.exam_class_name }}</h3>
     <div id="notification_exam" class="alert alert-success" role="alert" style="display: none;">
         Saved successfully!
     </div>
     <form id="studentForm" method="POST" action="{% url 'class_exams' class_instance.slug %}" novalidate>
         {% csrf_token %}
-        <h4 class="text-center fw-bolder">Click the EDIT button to edit an Exam details</h4>
+        <h4 class="text-center fw-bolder">Click the EDIT button to edit Exam details</h4>
         <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh; min-width: 50vw;">
             <div class="box_clr" style="border: 1px solid #000; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                 <input type="hidden" name="student_id" id="student_id" value="">
@@ -19,7 +19,7 @@
                 <div><input type="text" name="shift" id="id_shift" value=""><strong>Shift</strong></div>
                 <div><input type="text" name="start_time" id="id_start_time" value=""><strong>Start Time</strong></div>
                 <div><input type="text" name="end_time" id="id_end_time" value=""><strong>End Time</strong></div>
-                <input type="text" name="duration" id="duration" value=""><strong>Duration</strong>
+                <div><input type="text" name="total_time" id="id_total_time" value=""><strong>Duration</strong></div>
             </div>
         </div>
         <button type="submit" class="btn btn-success" style="display: block; margin: 0 auto;">Submit</button>
@@ -38,20 +38,41 @@
             <tbody>
                 {% for exam in exams %}
                 <tr id="student-{{ exam.id }}">
-                    <td>{{exam.date}}</td>
-                    <td>{{exam.subject}}</td>
-                    <td>{{exam.shift}}</td>
-                    <td>{{exam.start_time}}</td>
-                    <td>{{exam.end_time}}</td>
-                    <td>{{exam.total_time}}</td>
+                    <td>{{ exam.date }}</td>
+                    <td>{{ exam.subject }}</td>
+                    <td>{{ exam.shift }}</td>
+                    <td>{{ exam.start_time }}</td>
+                    <td>{{ exam.end_time }}</td>
+                    <td>{{ exam.total_time }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary exam-edit-btn" data-id="{{ result.id }}">Edit</button>
-                        <button type="button" class="btn btn-danger exam-delete-btn" data-id="{{ result.id }}">Delete</button>
+                        <button type="button" class="btn btn-primary exam-edit-btn" data-id="{{ exam.id }}">Edit</button>
+                        <button type="button" class="btn btn-danger exam-delete-btn" data-id="{{ exam.id }}">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </form> 
+    </form>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.exam-edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const studentId = this.getAttribute('data-id');
+                fetch(`/get_exam/${studentId}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('student_id').value = data.id;
+                        document.getElementById('id_date').value = data.date;
+                        document.getElementById('id_subject').value = data.subject;
+                        document.getElementById('id_shift').value = data.shift;
+                        document.getElementById('id_start_time').value = data.start_time;
+                        document.getElementById('id_end_time').value = data.end_time;
+                        document.getElementById('id_total_time').value = data.total_time;
+                    })
+                    .catch(error => console.error("Error fetching data:", error));
+            });
+        });
+    });
+</script>
 {% endblock content %}

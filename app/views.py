@@ -153,10 +153,9 @@ def class_exams(request, slug):
     exams = Exam.objects.filter(exam_class_name=class_instance)
 
     if request.method == 'POST':
-        print(request.POST)
         student_id = request.POST.get('student_id')
         if student_id:
-            exam = Exam.objects.get(id=student_id)
+            exam = get_object_or_404(Exam, id=student_id)
             form = ExamForm(request.POST, instance=exam)
         else:
             form = ExamForm(request.POST)
@@ -173,6 +172,8 @@ def class_exams(request, slug):
                 'end_time': exam.end_time,
                 'total_time': exam.total_time
             })
+        else:
+            return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
 
     form = ExamForm()
     context = {'exams': exams, 'class_instance': class_instance, 'form': form}
