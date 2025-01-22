@@ -1,14 +1,13 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse,Http404
-from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams
+from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams,Announcement
 from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm
 
 
 
 # Create your views here.
 def index_page(request):
-    teacher=teachers.objects.all()
-    context={'teacher':teacher}
+    context={}
     return render(request,'app/index.html',context)
 
 def teacher_page(request):
