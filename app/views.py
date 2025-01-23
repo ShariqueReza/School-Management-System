@@ -10,6 +10,10 @@ def index_page(request):
     context={}
     return render(request,'app/index.html',context)
 
+def Nt_Oc(request):
+    context={}
+    return render(request,'app/Nt_and_Oc.html',context)
+
 def teacher_page(request):
     teacher=teachers.objects.all()
     context={'teacher':teacher}
