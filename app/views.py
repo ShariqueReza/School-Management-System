@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse,Http404
-from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams
+from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams,Notifications,Occasions
 from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm
 
 
@@ -11,7 +11,9 @@ def index_page(request):
     return render(request,'app/index.html',context)
 
 def Nt_Oc(request):
-    context={}
+    Notification=Notifications.objects.all()
+    Occasion=Occasions.objects.all()
+    context={'Notification':Notification,'Occasion':Occasion}
     return render(request,'app/Nt_and_Oc.html',context)
 
 def teacher_page(request):
