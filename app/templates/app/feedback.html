@@ -3,9 +3,9 @@
 {% load static %}
 {% block content %}   
                 <div class="col-lg-8 col-md-8 col-sm-12 main-content">                    
-                    <div class="box_clr">
-                        <h3 class="text-center mb-4 about_text">Feel free to add a Feedback</h3>
-                        <form method="POST" style="width: 50%; margin: 0 auto;">
+                    <div class="box_clr rounded">
+                        <h3 class="text-center pt-3 mb-4 about_text">Feel free to add a Feedback</h3>
+                        <form method="POST" style="width: 50%; margin: 0 auto; border: 2px solid #000; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="authorName" class="font-weight-bold about_text">Full Name</label>
@@ -19,10 +19,10 @@
                                 <label for="comment" class="font-weight-bold about_text">Comment</label>
                                 {{form.comment}}
                             </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-success">Submit</button>
                         </form>
-                        <h3 class="text-center about_text mt-5">What Others Say</h3>
-                        <div class="container rounded" style="background-color: rgb(190, 154, 111);">
+                        <h3 class="text-center about_text mt-5 pb-2">Visitor Insights</h3>
+                        <div class="container rounded">
                             {% for f in feedback  %}
                             <div class="fs-4">
                                 <h4 class="about_text">{{f.name}}</h4>
