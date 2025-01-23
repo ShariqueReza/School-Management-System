@@ -83,14 +83,14 @@ class Exam(models.Model):
     end_time=models.CharField(max_length=20,null=True)
     total_time=models.CharField(max_length=20,null=True)
 
-class Announcement(models.Model):
+
+
+class Notifications(models.Model):
     date=models.DateField()
     name=models.CharField(max_length=100,null=True,blank=True)
-    description=models.TextField()
+    descriptions=models.TextField() 
 
-class Events(models.Model):
+class Occasions(models.Model):
     date=models.DateField()
     name=models.CharField(max_length=100,null=True,blank=True)
-    description=models.TextField()
-
-   
+    descriptions=models.TextField() 
