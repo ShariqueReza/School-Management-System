@@ -11,13 +11,16 @@
                                 <th class="about_text">Title</th>
                                 <th class="about_text">Date</th>
                                 <th class="about_text">Descriptions</th>
+                            </tr>
                         </thead>
                         <tbody style="background-color: rgb(240, 208, 170); font-weight:600; cursor: pointer;">
+                            {% for Nt in Notification %}
                             <tr>
-                                <td class="about_text">sfdh</td>
-                                <td class="about_text">sfdh</td>
-                                <td class="about_text">sfdh</td> 
+                                <td class="about_text">{{Nt.name}}</td>
+                                <td class="about_text">{{Nt.date}}</td>
+                                <td class="about_text">{{Nt.descriptions}}</td> 
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                     <h3 class="text-center mt-3">Occasions</h3>
@@ -27,13 +30,16 @@
                                 <th class="about_text">Title</th>
                                 <th class="about_text">Date</th>
                                 <th class="about_text">Descriptions</th>
+                            </tr>
                         </thead>
                         <tbody style="background-color: rgb(240, 208, 170); font-weight:600; cursor: pointer;">
+                            {% for Oc in Occasion %}
                             <tr>
-                                <td class="about_text">sfdh</td>
-                                <td class="about_text">sfdh</td>
-                                <td class="about_text">sfdh</td> 
+                                <td class="about_text">{{Oc.name}}</td>
+                                <td class="about_text">{{Oc.date}}</td>
+                                <td class="about_text">{{Oc.descriptions}}</td> 
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
