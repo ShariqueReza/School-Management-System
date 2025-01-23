@@ -25,6 +25,9 @@ body{
   border: 1px solid #ccc;
   background-color: rgb(240, 208, 170);
 }
+.space_row{
+  margin-bottom: 10px;
+}
 .address-col { 
   width: 200px;
 }

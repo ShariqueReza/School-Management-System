@@ -3,28 +3,28 @@
 {% load static %}
 {% block content %}
 <div class="col-lg-8 col-md-8 col-sm-12 main-content">
-    <h2 class="text-center">Brighton School</h2>
     <h3 class="text-center mb-3"><strong>{{ class_instance.exam_class_name }}</strong></h3>
     <div id="notification_exam" class="alert alert-success" role="alert" style="display: none;">
         Saved successfully!
     </div>
     <form id="studentForm" method="POST" action="{% url 'class_exams' class_instance.slug %}" novalidate>
         {% csrf_token %}
-        <h4 class="text-center fw-bolder">Click the EDIT button to edit Exam details</h4>
-        <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh; min-width: 50vw;">
-            <div class="box_clr" style="border: 1px solid #000; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="container row box_clr d-flex justify-content-center align-items-center mb-3" style="min-height: 50vh; min-width: 50vw;"> 
+            <div class="" style="border: 2px solid #000; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                 <input type="hidden" name="student_id" id="student_id" value="">
-                <div><input type="text" name="date" id="id_date" value=""><strong>Date</strong></div>
-                <div><input type="text" name="subject" id="id_subject" value=""><strong>Subject</strong></div>
-                <div><input type="text" name="shift" id="id_shift" value=""><strong>Shift</strong></div>
-                <div><input type="text" name="start_time" id="id_start_time" value=""><strong>Start Time</strong></div>
-                <div><input type="text" name="end_time" id="id_end_time" value=""><strong>End Time</strong></div>
-                <div><input type="text" name="total_time" id="id_total_time" value=""><strong>Duration</strong></div>
+                <div><input type="text" name="date" id="id_date" value=""><strong>-Date</strong></div>
+                <div><input type="text" name="subject" id="id_subject" value=""><strong>-Subject</strong></div>
+                <div><input type="text" name="shift" id="id_shift" value=""><strong>-Shift</strong></div>
+                <div><input type="text" name="start_time" id="id_start_time" value=""><strong>-Start Time</strong></div>
+                <div><input type="text" name="end_time" id="id_end_time" value=""><strong>-End Time</strong></div>
+                <div><input type="text" name="total_time" id="id_total_time" value=""><strong>-Duration</strong></div>
             </div>
         </div>
         <button type="submit" class="btn btn-success" style="display: block; margin: 0 auto;">Submit</button>
+        <div class="box_clr mt-4 rounded">
+            <h4 class="text-center fw-bolder">Click the EDIT button to edit Exam details</h4>
         <table class="table table-bordered">
-            <thead>
+            <thead style="font-weight: 900; background-color: black; color: white;">
                 <tr>
                     <th>Date</th>
                     <th>Subject</th>
@@ -52,6 +52,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
     </form>
 </div>
 <script>
