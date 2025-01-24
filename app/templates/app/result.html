@@ -9,7 +9,7 @@
     </div>
     <form id="studentForm" method="POST" action="{% url 'class_results' class_instance.slug %}" novalidate>
         {% csrf_token %}
-        <div class="container row box_clr d-flex justify-content-center align-items-center mb-3" style="min-height: 50vh; min-width: 50vw;"> 
+        <div class="container row box_clr d-flex justify-content-center align-items-center mb-3 rounded" style="min-height: 50vh; min-width: 50vw;"> 
             <div class="box_clr" style="border: 2px solid #000; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                 <input type="hidden" name="student_id" id="student_id" value="">
                 <div><input class="text-center" type="text" name="st_name" id="id_st_name" value=""><strong>-Student Name</strong></div>
