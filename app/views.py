@@ -205,3 +205,7 @@ def delete_exam(request, student_id):
     exam = get_object_or_404(Exam, id=student_id)
     exam.delete()
     return JsonResponse({'status': 'success'})
+
+
+def register(request):
+    return render(request, 'registration/registration.html')

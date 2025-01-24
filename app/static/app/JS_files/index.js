@@ -75,5 +75,6 @@ navs.forEach((nav) => {
 
 renderCalendar();
 
-
-
+function menu() {
+  link.classList.toggle("active");
+}

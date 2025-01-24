@@ -49,7 +49,22 @@
                             <button class="btn btn-med btn-outline-dark" type="button"><b>Feedback</b></button>
                         </a>
                     </ul>
-                    <button class="btn btn-lg btn-outline-danger ml-auto" type="button"><b>Logout</b></button>
+                    <div class="action-btn ml-auto">
+                        {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %} 
+                            <button class="btn btn-lg btn-outline-danger" type="submit"><b>Logout</b></button>
+                        </form>
+                        {% else %}
+                        <a href="{% url "login" %}">
+                            <button class="btn btn-scoundary">Login</button>
+                        </a>
+                        <a href="{% url "register" %}">
+                            <button class="btn btn-primary">Sign Up</button>
+                        </a>
+                        <i class="uil uil-align-center-alt menu" onclick="menu()"></i>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </nav>
