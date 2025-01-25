@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse,Http404
 from app.models import teachers,feedback,Student,all_students,Result,all_results,Exam,all_exams,Notifications,Occasions
-from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm
+from app.forms import FeedbackForm,StudentForm,ResultForm,ExamForm,NewUserForm
 
 
 
@@ -208,4 +208,6 @@ def delete_exam(request, student_id):
 
 
 def register(request):
-    return render(request, 'registration/registration.html')
+    form=NewUserForm()
+    context={'form':form}
+    return render(request, 'registration/registration.html',context)
