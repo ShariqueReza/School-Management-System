@@ -74,7 +74,7 @@
         <div class="container-fluid">
             <div class="row no-gutters">
                 <div class="col-lg-4 col-md-4 col-sm-12 sidebar">  
-                    <h2 class="text-center"></h2>
+                    <h2 class="text-center"><strong>School Calender</strong></h2>
                     <div class="calendar">
                         <header>
                           <h3></h3>
@@ -96,45 +96,51 @@
                           <ul class="dates"></ul>
                         </section>
                     </div>
-                    <div>
-                        <div class="container col-12 border-0 mb-3 fs-4 bg-black text-white text-end"  style="height:150px">
-                        <h1 id="abc" class="text-end col-12"></h1>
-                        <input type="text" id="inputBox" class="input_edit col-8 border-0 mb-3 fs-4 bg-black text-white text-end col-12"  >
+                    <h2 class="text-center mt-3"><strong>School Calculator</strong></h2>
+                    <div class="calculator text-center h-60 rounded ">
+                        <div>
+                            <div class="container col-12 border-0 mb-3 fs-4 bg-black text-white" style="height:150px; text-align: left;">
+                                <div>
+                                    <div id="resultBox" class="result col-12 mt-1"></div>
+                                    <input type="text" id="inputBox" class="input_edit col-12 border-0 mb-1 fs-4 text-white" style="text-align: left;">
+                                    
+                                </div>
+                            </div>
+                            <div class="button_edit">
+                                <div class="mb-2 ms-2">
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">AC</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">D</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">%</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">/</button>
+                                </div>
+                                <div class="mb-2 ms-2">
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">7</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">8</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">9</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">*</button>
+                                </div>
+                                <div class="mb-2 ms-2">
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">4</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">5</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">6</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">-</button>
+                                </div>
+                                <div class="mb-2 ms-2">
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">1</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">2</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">3</button>
+                                    <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">+</button>
+                                </div>
+                                <div class="ms-2">
+                                    <button class="button bg-secondary border-0 text-warning rounded-2 col-2 me-2">00</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">0</button>
+                                    <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">.</button>
+                                    <button class="button equalBtn bg-warning border-0 text-white rounded-2 col-2 me-2">=</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="button_edit">
-                          <div class="mb-2 ms-2">
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">AC</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">D</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">%</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">/</button>
-                          </div>
-                          <div class="mb-2 ms-2">
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">7</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">8</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">9</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">*</button>
-                          </div>
-                          <div class="mb-2 ms-2">
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">4</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">5</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">6</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">-</button>
-                          </div>
-                          <div class="mb-2 ms-2">
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">1</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">2</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">3</button>
-                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">+</button>
-                          </div>
-                  
-                          <div class="ms-2">
-                            <button class="button bg-secondary border-0 text-warning rounded-2 col-2 me-2">00</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">0</button>
-                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">.</button>
-                            <button class="button equalBtn bg-warning border-0 text-white rounded-2 col-2 me-2">=</button>
-                          </div>
-                        </div>
-                      </div>
+                    </div>
+                    
                 </div>
                 {% block content %}{% endblock content %}
             </div>

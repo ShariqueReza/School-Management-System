@@ -75,6 +75,39 @@ navs.forEach((nav) => {
 
 renderCalendar();
 
-function menu() {
-  link.classList.toggle("active");
-}
+document.addEventListener('DOMContentLoaded', (event) => {
+  let input = document.getElementById('inputBox');
+  let buttons = document.querySelectorAll('button');
+  let string = "";
+  let arr = Array.from(buttons);
+
+  arr.forEach(button => {
+      button.addEventListener('click', (e) => {
+          if(e.target.innerHTML == '='){ 
+              update(string);
+              string = eval(string);
+              input.value = string;
+          }
+          else if(e.target.innerHTML == 'AC'){
+              string = "";
+              input.value = string;
+              update(string) = "";
+          }
+          else if(e.target.innerHTML == 'D'){
+              string = string.substring(0, string.length-1);
+              input.value = string;
+          }
+          else{
+              string += e.target.innerHTML;
+              input.value = string;
+          }
+      });
+  });
+
+  function update(str){
+      let val = document.getElementById('resultBox');
+      val.innerText = str;
+  }
+});
+
+
