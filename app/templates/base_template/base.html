@@ -7,6 +7,7 @@
     <title>{% block title %}{% endblock title %}</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'app/CSS_Files/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/CSS_Files/calculator.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -95,6 +96,45 @@
                           <ul class="dates"></ul>
                         </section>
                     </div>
+                    <div>
+                        <div class="container col-12 border-0 mb-3 fs-4 bg-black text-white text-end"  style="height:150px">
+                        <h1 id="abc" class="text-end col-12"></h1>
+                        <input type="text" id="inputBox" class="input_edit col-8 border-0 mb-3 fs-4 bg-black text-white text-end col-12"  >
+                        </div>
+                        <div class="button_edit">
+                          <div class="mb-2 ms-2">
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">AC</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">D</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">%</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">/</button>
+                          </div>
+                          <div class="mb-2 ms-2">
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">7</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">8</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">9</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">*</button>
+                          </div>
+                          <div class="mb-2 ms-2">
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">4</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">5</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">6</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">-</button>
+                          </div>
+                          <div class="mb-2 ms-2">
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">1</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">2</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">3</button>
+                            <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">+</button>
+                          </div>
+                  
+                          <div class="ms-2">
+                            <button class="button bg-secondary border-0 text-warning rounded-2 col-2 me-2">00</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">0</button>
+                            <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">.</button>
+                            <button class="button equalBtn bg-warning border-0 text-white rounded-2 col-2 me-2">=</button>
+                          </div>
+                        </div>
+                      </div>
                 </div>
                 {% block content %}{% endblock content %}
             </div>

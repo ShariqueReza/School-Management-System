@@ -23,39 +23,39 @@
         </div>
         <button type="submit" class="btn btn-success" style="display: block; margin: 0 auto;">Submit</button>
         <div class="box_clr mt-4 rounded">
-        <h4 class="text-center fw-bolder pt-3">Click the EDIT button to edit a Result details</h4>
-        <table class="table table-bordered rounded box_clr mt-4">
-            <thead style="font-weight: 900; background-color: black; color: white;">
-                <tr>
-                    <th>Student Name</th>
-                    <th>Math</th>
-                    <th>Science</th>
-                    <th>English</th>
-                    <th>Hindi</th>
-                    <th>Total Marks</th>
-                    <th>Percentage</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for result in results %}
-                <tr id="student-{{ result.id }}">
-                    <td>{{ result.st_name }}</td>
-                    <td>{{ result.Math }}</td>
-                    <td>{{ result.Science }}</td>
-                    <td>{{ result.English }}</td>
-                    <td>{{ result.Hindi }}</td>
-                    <td>{{ result.Total_marks }}</td>
-                    <td>{{ result.Percentage }}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary result-edit-btn" data-id="{{ result.id }}">Edit</button>
-                        <button type="button" class="btn btn-danger result-delete-btn" data-id="{{ result.id }}">Delete</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            <h4 class="text-center fw-bolder pt-3">Click the EDIT button to edit a Result details</h4>
+            <table class="table table-bordered rounded box_clr mt-4">
+                <thead style="font-weight: 900; background-color: black; color: white;">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Math</th>
+                        <th>Science</th>
+                        <th>English</th>
+                        <th>Hindi</th>
+                        <th>Total Marks</th>
+                        <th>Percentage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr id="student-{{ result.id }}">
+                        <td>{{ result.st_name }}</td>
+                        <td>{{ result.Math }}</td>
+                        <td>{{ result.Science }}</td>
+                        <td>{{ result.English }}</td>
+                        <td>{{ result.Hindi }}</td>
+                        <td>{{ result.Total_marks }}</td>
+                        <td>{{ result.Percentage }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary result-edit-btn" data-id="{{ result.id }}">Edit</button>
+                            <button type="button" class="btn btn-danger result-delete-btn" data-id="{{ result.id }}">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </form>
 </div>
 <script>
