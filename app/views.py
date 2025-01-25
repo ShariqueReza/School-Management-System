@@ -22,7 +22,7 @@ def teacher_page(request):
     return render(request,'app/teachers.html',context)
 
 def feedback_page(request):
-    feedbacks=feedback.objects.all()
+    feedbacks=feedback.objects.all()[0:10]
     form=FeedbackForm()
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
