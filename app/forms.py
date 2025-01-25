@@ -1,5 +1,7 @@
 from django import forms
 from app.models import feedback,Student,Result,Exam
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -25,3 +27,8 @@ class ExamForm(forms.ModelForm):
     class Meta:
         model = Exam
         fields = ['date', 'subject', 'shift', 'start_time', 'end_time', 'total_time']
+
+class NewUserForm(UserCreationForm):
+    class Meta:
+        model=User
+        fields=('username','email','password1','password2')
