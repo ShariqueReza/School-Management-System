@@ -35,10 +35,10 @@ class NewUserForm(UserCreationForm):
 
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['placeholder']='Type your username....'
-        self.fields['email'].widget.attrs['placeholder']='Type your email....'
-        self.fields['password1'].widget.attrs['placeholder']='Type your password....'
-        self.fields['password2'].widget.attrs['placeholder']='Repeat your password....'
+        self.fields['username'].widget.attrs.update({'placeholder': 'Type your username....','class': 'form-control'})
+        self.fields['email'].widget.attrs.update({'placeholder': 'Type your email....','class': 'form-control'})
+        self.fields['password1'].widget.attrs.update({'placeholder': 'Type your password....','class': 'form-control'})
+        self.fields['password2'].widget.attrs.update({'placeholder': 'Repeat your password....','class': 'form-control'})
     
     def clean_username(self):
         username=self.cleaned_data['username'].lower()

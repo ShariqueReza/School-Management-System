@@ -75,7 +75,7 @@
                     </div>
                     <h4 class="text-center mt-2"><strong>Login Here</strong></h4>
                     <div class="d-flex justify-content-center align-items-center mt-5">
-                        <form action="{% url "login" %}" method="post" class="form">
+                        <form action="{% url "login" %}" method="post" class="form" >
                             {% csrf_token %}
                             {% if form.non_field_errors %}
                             {% for error in form.non_field_errors %}
