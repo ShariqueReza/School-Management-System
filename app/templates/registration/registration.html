@@ -75,23 +75,63 @@
                     </div>
                     <h4 class="text-center mt-2"><strong>Sign Up Here</strong></h4>
                     <div class="d-flex justify-content-center align-items-center mt-5">
-                        <form>
-                            <div class="form-group">
-                                <strong><label for="username">Username</label></strong>
-                                {{form.username}}
+                        <form method="POST" class="form">
+                            {% csrf_token %}
+                            <div class="inputs">
+                                <div>
+                                    <div class="form-group">
+                                        <div>
+                                            <strong><label for="username">Username</label></strong>
+                                        </div>
+                                        {{form.username}}
+                                    </div>
+                                    {% if form.username.errors %}
+                                    <div class="field-error">
+                                        <p>{{form.username.errors.as_text}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <div>
+                                            <label for="email"><strong>Email</strong></label>
+                                        </div>
+                                        {{form.email}}
+                                    </div>
+                                    {% if form.email.errors %}
+                                    <div class="field-error">
+                                        <p>{{form.email.errors.as_text}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <div>
+                                            <label for="password"><strong>Password</strong></label>
+                                        </div>    
+                                        {{form.password1}}
+                                    </div>
+                                    {% if form.password.errors %}
+                                    <div class="field-error">
+                                        <p>{{form.password.errors.as_text}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <div>
+                                            <label for="password"><strong>Password</strong></label>
+                                        </div>
+                                        {{form.password2}}
+                                    </div>
+                                    {% if form.password2.errors %}
+                                    <div class="field-error">
+                                        <p>{{form.password2.errors.as_text}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="email"><strong>Email</strong></label>
-                                {{form.email}}
-                            </div>
-                            <div class="form-group">
-                                <label for="password"><strong>Password</strong></label>
-                                {{form.password1}}
-                            </div>
-                            <div class="form-group">
-                                <label for="password"><strong>Password</strong></label>
-                                {{form.password2}}
-                            </div>
+                            
                             <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                             <div class="text-center mt-3 pb-3">
                                 <a href="{% url "login" %}"><strong>Old User? Login Here</strong></a>
