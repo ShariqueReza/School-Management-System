@@ -56,13 +56,9 @@
                             <button class="btn btn-lg btn-outline-danger" type="submit"><b>Logout</b></button>
                         </form>
                         {% else %}
-                        <a href="{% url "login" %}">
-                            <button class="btn btn-scoundary">Login</button>
-                        </a>
                         <a href="{% url "register" %}">
-                            <button class="btn btn-primary">Sign Up</button>
+                            <button class="btn btn-med btn-outline-primary"><b>Sign Up<b></button>
                         </a>
-                        <i class="uil uil-align-center-alt menu" onclick="menu()"></i>
                         {% endif %}
                     </div>
                 </div>
