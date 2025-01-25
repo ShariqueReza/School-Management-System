@@ -77,6 +77,13 @@
                     <div class="d-flex justify-content-center align-items-center mt-5">
                         <form method="POST" class="form">
                             {% csrf_token %}
+                            {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <div class="field-error">
+                                <p>{{error}}</p>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
                             <div class="inputs">
                                 <div>
                                     <div class="form-group">
