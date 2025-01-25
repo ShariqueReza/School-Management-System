@@ -86,18 +86,14 @@
                             {% endif %}
                             <div class="inputs">
                                 <div class="form-group">
-                                    <div>
-                                        <label for="username"><strong>Username</strong></label>
-                                    </div>
-                                    {{form.username}}
+                                    <label for="username"><strong>Username</strong></label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
                                 </div>
                                 <div class="form-group">
-                                    <div>
-                                        <label for="password"><strong>Password</strong></label>
-                                    </div>
-                                    {{form.password}}  
+                                    <label for="password"><strong>Password</strong></label>
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">  
                                 </div>
-                            </div>
+                            </div>                            
                             <button type="submit" class="btn btn-secondary btn-block"><strong>Submit</strong></button>
                             <div class="text-center mt-3 pb-3">
                                 <a href="{% url "register" %}"><strong>New user? Sign up here</strong></a>
