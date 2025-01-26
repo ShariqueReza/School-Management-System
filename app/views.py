@@ -12,8 +12,8 @@ def index_page(request):
     return render(request,'app/index.html',context)
 
 def Nt_Oc(request):
-    Notification=Notifications.objects.all()
-    Occasion=Occasions.objects.all()
+    Notification=Notifications.objects.all().order_by('date')
+    Occasion=Occasions.objects.all().order_by('date')
     context={'Notification':Notification,'Occasion':Occasion}
     return render(request,'app/Nt_and_Oc.html',context)
 
