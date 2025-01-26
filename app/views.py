@@ -156,7 +156,7 @@ def all_exam(request):
 
 def class_exams(request, slug):
     class_instance = get_object_or_404(all_exams, slug=slug)
-    exams = Exam.objects.filter(exam_class_name=class_instance)
+    exams = Exam.objects.filter(exam_class_name=class_instance).order_by('date')
 
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
