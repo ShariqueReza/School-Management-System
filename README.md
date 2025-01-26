@@ -20,23 +20,23 @@ School Management System is a fully responsive and user-friendly platform design
 
 ## Features
 
-#### • User Authentication: 
+#### User Authentication: 
 • Secure login, signup, and logout functionalities for both administrators and users.
 #### Responsive Design: 
 • Fully responsive & Optimized for desktops, tablets, and mobile devices.
-#### • Student Management:
+#### Student Management:
 • Edit and view student details, organized class-wise for quick access during emergencies.
 • Manage and track student results effectively.
-#### • Exam Management: 
+#### Exam Management: 
 • Edit and View exam schedules with ease to keep everyone informed and prepared.
-#### • Integrated Calendar & Calculator:
+#### Integrated Calendar & Calculator:
 • Integrated calendar for teacher reference to track schedules and plan activities.
 • Built-in calculator to assist in calculating results, marks, and percentages accurately and efficiently.
-#### • Notifications & Evants:
+#### Notifications & Evants:
 • Stay updated with the latest announcements, notifications, and important events.
 #### Teacher Management: 
 • Quickly find posts based on keywords.
-#### • Teacher Management: 
+#### Teacher Management: 
 • View teacher details for emergency contact or reference.
 #### Feedback System:
 • Submit feedback to improve the system and ensure user satisfaction
