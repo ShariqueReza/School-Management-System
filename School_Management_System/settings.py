@@ -25,9 +25,9 @@ SETTINGS_PATH=os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'django-insecure-$ra9%7(6yos%ry68sc&2vzhjwti@@=a=7w1%&v7xg*fuxomew8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("IS_DEVELOPMENT",True)=='True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.getenv("APP_HOST"),"http://127.0.0.1:8000/"]
 
 
 # Application definition
