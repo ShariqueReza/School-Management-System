@@ -46,7 +46,7 @@
                     <td>{{ student.emergency }}</td>
                     <td>
                         <button type="button" class="btn btn-primary edit-btn" data-id="{{ student.id }}">Edit</button>
-                        <button type="button" class="btn btn-danger delete-btn" data-id="{{ student.id }}">Delete</button>
+                        <button type="button" class="btn btn-danger delete-btn" disabled data-id="{{ student.id }}">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}

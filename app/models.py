@@ -63,6 +63,9 @@ class Result(models.Model):
     Hindi = models.IntegerField(null=True)
     Total_marks = models.IntegerField(null=True)
     Percentage = models.FloatField(null=True)
+
+    def __str__(self):
+        return self.st_name
     
 class all_exams(models.Model):
     exam_class_name = models.CharField(max_length=50,blank=True)
@@ -84,6 +87,8 @@ class Exam(models.Model):
     start_time=models.CharField(max_length=20,null=True)
     end_time=models.CharField(max_length=20,null=True)
     total_time=models.CharField(max_length=20,null=True)
+
+    
 
 
 
