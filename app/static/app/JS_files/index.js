@@ -75,38 +75,43 @@ navs.forEach((nav) => {
 
 renderCalendar();
 
+
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
   let input = document.getElementById('inputBox');
-  let buttons = document.querySelectorAll('button');
+  let calculatorButtons = document.querySelectorAll('.calc-button');
   let string = "";
-  let arr = Array.from(buttons);
 
-  arr.forEach(button => {
+  calculatorButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-          if(e.target.innerHTML == '='){ 
-              update(string);
-              string = eval(string);
+          e.stopPropagation();
+          if (e.target.innerHTML === '=') {
+              try {
+                  string = parseAndEvaluate(string);
+              } catch (error) {
+                  string = "Error";
+              }
               input.value = string;
           }
-          else if(e.target.innerHTML == 'AC'){
+          else if (e.target.innerHTML === 'AC') {
               string = "";
               input.value = string;
-              update(string) = "";
           }
-          else if(e.target.innerHTML == 'D'){
-              string = string.substring(0, string.length-1);
+          else if (e.target.innerHTML === 'D') {
+              string = string.substring(0, string.length - 1);
               input.value = string;
           }
-          else{
+          else {
               string += e.target.innerHTML;
               input.value = string;
           }
       });
   });
 
-  function update(str){
-      let val = document.getElementById('resultBox');
-      val.innerText = str;
+  function parseAndEvaluate(expression) {
+      let result = Function(`'use strict'; return (${expression})`)();
+      return result;
   }
 });
 

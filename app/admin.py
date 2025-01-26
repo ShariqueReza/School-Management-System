@@ -1,6 +1,7 @@
 from django.contrib import admin
 from app.models import teachers,feedback,all_students,Student,all_results,Result,all_exams,Exam,Notifications,Occasions
 
+    
 # Register your models here.
 admin.site.register(teachers)
 admin.site.register(feedback)

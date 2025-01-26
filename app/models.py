@@ -52,16 +52,15 @@ class all_results(models.Model):
         return self.result_class_name
     
 class Result(models.Model):
-    result_class_name = models.ForeignKey(all_results, on_delete=models.CASCADE, related_name='students_result',null=True,blank=True)
-    st_name=models.CharField(max_length=100)
-    Math=models.IntegerField(null=True)
-    Science=models.IntegerField(null=True)
-    English=models.IntegerField(null=True)
-    Hindi=models.IntegerField(null=True)
-    Total_marks=models.IntegerField(null=True)
-    Percentage=models.FloatField(null=True)
-
-
+    result_class_name = models.ForeignKey(all_results, on_delete=models.CASCADE, related_name='students_result', null=True, blank=True)
+    st_name = models.CharField(max_length=100)
+    Math = models.IntegerField(null=True)
+    Science = models.IntegerField(null=True)
+    English = models.IntegerField(null=True)
+    Hindi = models.IntegerField(null=True)
+    Total_marks = models.IntegerField(null=True)
+    Percentage = models.FloatField(null=True)
+    
 class all_exams(models.Model):
     exam_class_name = models.CharField(max_length=50,blank=True)
     slug=models.SlugField(max_length=200,unique=True,null=True)
