@@ -93,7 +93,7 @@ def all_result(request):
 
 def class_results(request, slug):
     class_instance = get_object_or_404(all_results, slug=slug)
-    results = Result.objects.filter(result_class_name=class_instance)
+    results = Result.objects.filter(result_class_name=class_instance).order_by('-Percentage')
 
     if request.method == 'POST':
         print(request.POST)
