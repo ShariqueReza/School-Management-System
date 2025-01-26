@@ -38,6 +38,9 @@ class Student(models.Model):
     blood_gr=models.CharField(max_length=10)
     emergency=models.IntegerField(null=True)
 
+    def __str__(self):
+        return self.st_name
+
 
 class all_results(models.Model):
     result_class_name = models.CharField(max_length=50,blank=True)

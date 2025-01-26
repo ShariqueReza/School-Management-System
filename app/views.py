@@ -44,7 +44,7 @@ def all_student(request):
 
 def class_students(request, slug):
     class_instance = get_object_or_404(all_students, slug=slug)
-    students = Student.objects.filter(class_name=class_instance)
+    students = Student.objects.filter(class_name=class_instance).order_by('st_name')
 
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
